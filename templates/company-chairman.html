@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Message from Chairman{% endblock %}
+
+{% block body %}
+<section class="intro-single">
+    {% for x in chair %}
+    <div class="container">
+
+        <div class="col-md-12 col-sm-12">
+            <h1>Chairman’s Message</h1>
+            <div class="content-page">
+              <div class="row margin-bottom-30">
+                
+                <!-- BEGIN INFO BLOCK -->               
+                <div class="col-md-9" style="text-align:justify;">
+                  {{x.detailed_description | safe}}
+                </div>
+                <div class="col-md-3">
+                  <img alt="" style="width: 100px; height: 122px; border-width: 1px; border-style: solid; margin: 10px;" src="/{{x.image}}">
+                  <p>{{x.name}}</br><small>Chairman</small></p>
+                  
+                </div>
+                <!-- END INFO BLOCK -->   
+
+              
+              </div>
+
+            </div>
+          </div>
+
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

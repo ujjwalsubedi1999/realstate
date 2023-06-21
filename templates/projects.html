@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Our Projects{% endblock %}
+{% block body %}
+<!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Our Amazing Projects</h1>
+ 
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ Property Grid Star /-->
+  <section class="property-grid grid">
+    <div class="container">
+      <div class="row">
+
+        {% for p in proj %}
+        <div class="col-md-4" style="margin-bottom: 30px;">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="{{p.image}}" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <a href="{% url 'projectsimg' p.id  %}"><span class="price-a">{{p.name}}</span></a>
+                  </div>
+                  <p class="link-a">{{p.location}}
+      
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      
+      
+      </div>
+    </div>
+  </section>
+  <!--/ Property Grid End /-->
+
+  {% endblock %}

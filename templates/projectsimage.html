@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Gallery{%endblock %}
+{% block stylecss %}
+
+{% endblock %}
+
+{% block body %}
+<section class="intro-single">
+<div class="container">
+
+
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+    {% for p in photos %}
+      
+    {% endfor %}
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+    {% for p in photos %}
+      <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+    {% endfor %}
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox" style="height: 550px !important;">
+      {% for p in photos %}
+      <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+        <img class="d-block w-100" src="{{p.images.url}}"
+          alt="First slide">
+          
+      </div>
+      <div class="carousel-caption d-none d-md-block">
+     
+        <p class="link-a">{{p.projectimg}}</p>
+      </div>
+      {% endfor %}
+      <!--/First slide-->
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+</div>
+
+
+
+
+
+
+</div>
+</section>
+{% endblock  %}

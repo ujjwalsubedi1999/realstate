@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About Us{% endblock %}
+{% block body %}
+  <!--/ Intro Single star /-->
+  <section class="intro-single" style="text-align:justify;">
+    <div class="container">
+      
+      <div class="main">
+        <div class="container" >
+
+          <!-- BEGIN SIDEBAR & CONTENT -->
+          <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+              <div class="content-page">
+                <div class="row margin-bottom-30">
+                  <!-- BEGIN INFO BLOCK -->               
+                  <div class="col-md-12">
+                   
+                    {% for x in abtfooter %}
+                      {{x.content | safe}} 
+                    {% endfor %}
+                    
+                  </div>
+                  <!-- END INFO BLOCK -->   
+  
+                
+                </div>
+  
+              </div>
+            </div>
+            <!-- END CONTENT -->
+          </div>
+          <!-- END SIDEBAR & CONTENT -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ About Star /-->
+  <section class="section-about">
+    <div class="container">
+  
+    </div>
+  </section>
+  <!--/ About End /-->
+
+ 
+{% endblock %}

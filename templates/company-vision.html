@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Company Vision {% endblock %} {% block body %}
+<section class="intro-single" style="text-align: justify">
+  <div class="container">
+    <div class="content-page">
+      <div class="row margin-bottom-30">
+        <!-- BEGIN INFO BLOCK -->
+        <div class="col-md-12">
+          {% for x in abt %} {{x.content | safe}} {% endfor %}
+        </div>
+        <!-- END INFO BLOCK -->
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

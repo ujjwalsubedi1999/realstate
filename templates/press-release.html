@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Press Release
+{%endblock %} {% block stylecss %}
+<style>
+  .modal:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .modal__content {
+    border-radius: 4px;
+    position: relative;
+    width: 60vw;
+    max-width: 90%;
+    background: #fff;
+    padding: 1em 2em;
+  }
+
+  .modal__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #585858;
+    text-decoration: none;
+  }
+
+  .wrapper a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 3px;
+    text-transform: uppercase;
+    color: #585858;
+    font-family: "Roboto", sans-serif;
+    padding: 4px 0;
+  }
+
+  .modal {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(77, 77, 77, 0.7);
+    transition: all 0.4s;
+  }
+</style>
+{% endblock %} {% block body %}
+<section class="intro-single">
+  <div class="container">
+    <h2 style="margin-bottom: 20px">Company News</h2>
+
+    <div class="wrapper">
+      <table>
+        {% for c in prel %}
+        <tr>
+          <td width="50px">{{forloop.counter}}.</td>
+          <td width="300px">
+            <a href="#demo-modal-{{forloop.counter}}">{{c.title}}</a>
+          </td>
+          <td width="500px">
+            {% if c.file%}
+            <a style="color: red" href="{{c.file}}">Attachments</a>
+            {% endif %}
+          </td>
+          <td>{{c.created_at}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% for c in prel %}
+    <div id="demo-modal-{{forloop.counter}}" class="modal">
+      <div class="modal__content">
+        <div>
+          <h1>{{c.title}}</h1>
+          <p style="font-size: 12px">{{c.created_at}}</p>
+        </div>
+
+        <p>{{c.description | safe}}</p>
+
+        {% if c.file%}
+        <a style="color: red" href="{{c.file}}">Attachments</a>
+        {% endif %}
+
+        <a href="#" class="modal__close">&times;</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

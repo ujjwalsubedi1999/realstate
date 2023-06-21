@@ -1,0 +1,226 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Home{% endblock %}
+{% block stylecss %}
+<style>
+  .service-box {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: #3e4d5c;
+    direction: ltr;
+    font: 400 15px "Open Sans", Arial, sans-serif;
+    box-sizing: border-box;
+    border-radius: 0 !important;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 40px !important;
+  }
+</style>
+{% endblock %} {% block body %}
+
+<!--/ Carousel Star /-->
+
+<div class="intro intro-carousel">
+  <div id="carousel" class="owl-carousel owl-theme">
+    {% for s in slid %}
+    <div
+      class="carousel-item-a intro-item bg-image"
+      style="background-image: url(/{{s.image}})"
+    >
+      <!-- /{{x.bigimage}} -->
+      <div class="overlay overlay-a"></div>
+      <div class="intro-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="intro-body">
+                  <h1 class="intro-title mb-4">{{s.title}}</h1>
+                  <p class="intro-subtitle intro-price">
+                    <span class="price-a">{{s.subtitle}}</span>
+                  </p>
+                  <p class="intro-title-top" style="max-width: 80%">
+                    {{s.desc | safe}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!--/ Carousel end /-->
+
+<!--/ Services Star /-->
+{% for a in abs %}
+<section class="section-services section-t8">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-wrap d-flex justify-content-between">
+          <div class="title-box">
+            <h2 class="title-a">Our Services</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row service-box margin-bottom-40">
+        <div class="col-md-3 col-sm-3">
+          <div class="service-box-heading" style="margin-bottom: 20px">
+            <em><i class="fa fa-user blue"></i></em>
+            <b><span style="font-size: 22px !important">{{a.title1}}</span></b>
+          </div>
+          <p style="font-size: 17px !important; text-align: justify">
+            {{a.desc1 | safe}}
+          </p>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <div class="service-box-heading" style="margin-bottom: 20px">
+            <em><i class="fa fa-file-text-o red"></i></em>
+            <b><span style="font-size: 22px !important">{{a.title2}}</span></b>
+          </div>
+          <p style="font-size: 17px !important; text-align: justify">
+            {{a.desc2 | safe}}
+          </p>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <div class="service-box-heading" style="margin-bottom: 20px">
+            <em><i class="fa fa-compress blue"></i></em>
+            <b><span style="font-size: 22px !important">{{a.title3}}</span></b>
+          </div>
+          <p style="font-size: 17px !important; text-align: justify">
+            {{a.desc3 | safe}}
+          </p>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <div class="service-box-heading" style="margin-bottom: 20px">
+            <em><i class="fa fa-bars green"></i></em>
+            <b><span style="font-size: 22px !important">{{a.title4}}</span></b>
+          </div>
+          <p style="font-size: 17px !important; text-align: justify">
+            {{a.desc4 | safe}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %}
+<!--/ Services End /-->
+
+<!-- Link to Official Website -->
+<div
+  class="row quote-v1 margin-bottom-30 py-4"
+  style="
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: white;
+    direction: ltr;
+    font: 400 20px 'Open Sans', Arial, sans-serif;
+    box-sizing: border-box;
+    border-radius: 0 !important;
+    margin-bottom: 30px !important;
+    background: #7c858e;
+    padding: 10px 0;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    max-width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+  "
+>
+  <div class="col-md-9">
+    <span>A Fully-Owned Subsidiary of Employees Provident Fund, Nepal</span>
+  </div>
+  <div class="col-md-3 text-right border-1">
+    <a class="btn-transparent" href="https://epf.org.np/" target="_blank"
+      ><i class="fa fa-rocket margin-right-10"></i>Go to Site</a
+    >
+  </div>
+</div>
+
+<!--/ Property Star /-->
+
+<section class="section-property section-t8">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-wrap d-flex justify-content-between">
+          <div class="title-box">
+            <h2 class="title-a">Projects Completed</h2>
+          </div>
+          <div class="title-link">
+            <a href="{% url 'projects' %}">All Projects </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="property-carousel" class="owl-carousel owl-theme">
+      {% for p in proj %}
+      <div class="carousel-item-b">
+        <div class="card-box-a card-shadow">
+          <div class="img-box-a">
+            <img src="/{{p.image}}" alt="" class="img-a img-fluid" />
+          </div>
+          <div class="card-overlay">
+            <div class="card-overlay-a-content">
+              <div class="card-body-a">
+                <div class="price-box d-flex">
+                  <a href="{% url 'projectsimg' p.id  %}"
+                    ><span class="price-a">{{p.name}}</span></a
+                  >
+                </div>
+                <p class="link-a">{{p.location}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!--/ Property End /-->
+
+<!--/ Testimonials Star /-->
+
+{% for x in chair %}
+<section class="section-testimonials section-t8 nav-arrow-a">
+  <div class="container">
+    <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+      <div class="carousel-item-a">
+        <div class="testimonials-box">
+          <div class="row">
+            <div class="col-sm-12 col-md-6 py-0 my-0">
+              <div class="testimonial-text">{{x.description | safe}}</div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="testimonials-content">
+                <b style="font-size: 20px">
+                  <p
+                    class="testimonial-text"
+                    style="font-style: normal !important"
+                  >
+                    Chairman
+                  </p>
+                </b>
+              </div>
+              <div class="testimonial-author-box">
+                <img src="/{{x.image}}" alt="" class="testimonial-avatar" />
+                <h5 class="testimonial-author">{{x.name}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %}
+<!--/ Testimonials End /-->
+{% endblock %}
